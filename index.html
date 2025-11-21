@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido – Quinta da Torta</title>
+
+<style>
+    body {
+        background: #ffffff;
+        color: #3a2d0c;
+        font-family: "Poppins", sans-serif;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 420px;
+        margin: auto;
+        background: #FFF8E7;
+        padding: 20px;
+        border-radius: 14px;
+        box-shadow: 0 0 10px rgba(212,175,55,0.25);
+    }
+
+    img {
+        width: 160px;
+        display: block;
+        margin: 0 auto 20px auto;
+    }
+
+    h2 {
+        text-align: center;
+        color: #d4af37;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .sabor-item {
+        background: #E8D9B5;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        font-size: 14px;
+    }
+
+    .sabor-item label {
+        font-weight: 600;
+        color: #3a2d0c;
+    }
+
+    .sub-legenda {
+        font-size: 11px;
+        margin-top: -2px;
+        opacity: 0.8;
+        color: #5a4723;
+    }
+
+    select, textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #d4af37;
+        background: #E8D9B5;
+        color: #000;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .qtd-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    .qtd-container button {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        background: #d7c6a3;
+        border: 1px solid #b8a57a;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #3a2d0c;
+    }
+
+    .qtd-container input {
+        width: 60px;
+        text-align: center;
+        padding: 5px;
+        background: #fff;
+        border: 1px solid #b8a57a;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+
+    .aviso {
+        color: red;
+        font-size: 12px;
+        display: none;
+        margin-top: 4px;
+    }
+
+    #subtotal {
+        font-size: 20px;
+        text-align: center;
+        margin: 20px 0 10px 0;
+        color: #d4af37;
+        font-weight: bold;
+    }
+
+    .btn-whatsapp {
+        width: 100%;
+        background: #25d366;
+        padding: 15px;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <img src="https://lh3.googleusercontent.com/d/1mn5IyAgsgLZTJwFbl0NUiV8FTEJXd1ZK" alt="Logo Quinta da Torta">
+
+    <h2>Olá, seja bem-vindo!</h2>
+
+    <div id="sabores-list">
+
+        <!-- MODELO COM LEGENDA, BOTÕES E AVISO -->
+        <div class="sabor-item">
+            <label>Frango com Catupiry</label>
+            <div class="sub-legenda">Frango desfiado temperado, mussarela e catupiry</div>
+
+            <select class="tamanho" data-sabor="Frango com Catupiry">
+                <option value="0">Selecione o tamanho</option>
+                <option value="18">500g – R$ 18</option>
+                <option value="28">750g – R$ 28</option>
+            </select>
+
+            <div class="qtd-container">
+                <button class="menos">−</button>
+                <input type="number" value="0" min="0">
+                <button class="mais">+</button>
+            </div>
+
+            <p class="aviso">Selecione o tamanho antes de escolher a quantidade.</p>
+        </div>
+
+        <div class="sabor-item">
+            <label>Calabresa Acebolada</label>
+            <div class="sub-legenda">Rodelas de linguiça calabresa com aneis de cebola</div>
+
+            <select class="tamanho" data-sabor="Calabresa Acebolada">
+                <option value="0">Selecione o tamanho</option>
+                <option value="18">500g – R$ 18</option>
+                <option value="28">750g – R$ 28</option>
+            </select>
+
+            <div class="qtd-container">
+                <button class="menos">−</button>
+                <input type="number" value="0" min="0">
+                <button class="mais">+</button>
+            </div>
+
+            <p class="aviso">Selecione o tamanho antes de escolher a quantidade.</p>
+        </div>
+
+        <div class="sabor-item">
+            <label>Presunto e Queijo</label>
+            <div class="sub-legenda">Presunto, queijo, tomate e orégano</div>
+
+            <select class="tamanho" data-sabor="Presunto e Queijo">
+                <option value="0">Selecione o tamanho</option>
+                <option value="18">500g – R$ 18</option>
+                <option value="28">750g – R$ 28</option>
+            </select>
+
+            <div class="qtd-container">
+                <button class="menos">−</button>
+                <input type="number" value="0" min="0">
+                <button class="mais">+</button>
+            </div>
+
+            <p class="aviso">Selecione o tamanho antes de escolher a quantidade.</p>
+        </div>
+
+        <div class="sabor-item">
+            <label>Portuguesa</label>
+            <div class="sub-legenda">Presunto, queijo, tomate, palmito, milho, ervilha e orégano</div>
+
+            <select class="tamanho" data-sabor="Portuguesa">
+                <option value="0">Selecione o tamanho</option>
+                <option value="18">500g – R$ 18</option>
+                <option value="28">750g – R$ 28</option>
+            </select>
+
+            <div class="qtd-container">
+                <button class="menos">−</button>
+                <input type="number" value="0" min="0">
+                <button class="mais">+</button>
+            </div>
+
+            <p class="aviso">Selecione o tamanho antes de escolher a quantidade.</p>
+        </div>
+
+        <!-- ITENS DE PREÇO FIXO -->
+        <div class="sabor-item">
+            <label>Torta Natalina</label>
+            <div class="sub-legenda">O sabor pode ser qualquer mencionado acima</div>
+
+            <select class="tamanho" data-sabor="Torta Natalina">
+                <option value="80">Único – R$ 80</option>
+            </select>
+
+            <div class="qtd-container">
+                <button class="menos">−</button>
+                <input type="number" value="0" min="0">
+                <button class="mais">+</button>
+            </div>
+        </div>
+
+        <div class="sabor-item">
+            <label>Torta Família</label>
+            <div class="sub-legenda">O sabor pode ser qualquer mencionado acima</div>
+
+            <select class="tamanho" data-sabor="Torta Família">
+                <option value="120">Único – R$ 120</option>
+            </select>
+
+            <div class="qtd-container">
+                <button class="menos">−</button>
+                <input type="number" value="0" min="0">
+                <button class="mais">+</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="subtotal">Subtotal: R$ 0,00</div>
+
+    <label>Entrega ou Retirada?</label>
+    <select id="tipoEntrega">
+        <option value="Retirada">Retirada</option>
+        <option value="Entrega">Entrega (+ R$ 5,00)</option>
+    </select>
+
+    <div id="endereco-area" style="display:none;">
+        <label>Endereço para entrega:</label>
+        <textarea id="endereco" rows="2"></textarea>
+    </div>
+
+    <label>Forma de pagamento:</label>
+    <select id="pagamento">
+        <option value="Pix">PIX</option>
+        <option value="Dinheiro">Dinheiro</option>
+    </select>
+
+    <div id="troco-area" style="display:none;">
+        <label>Troco para quanto?</label>
+        <input id="troco" type="number" min="0">
+    </div>
+
+    <button class="btn-whatsapp" onclick="enviarWhats()">Enviar via WhatsApp</button>
+
+</div>
+
+<script>
+// --- BOTÕES + / - COM AVISO ---
+function calcularSubtotal() {
+    let subtotal = 0;
+
+    document.querySelectorAll('.sabor-item').forEach(item => {
+        const select = item.querySelector('select');
+        const input = item.querySelector("input[type='number']");
+
+        const preco = Number(select.value);
+        const qtd = Number(input.value);
+
+        if (preco > 0 && qtd > 0) subtotal += preco * qtd;
+    });
+
+    const tipoEntrega = document.getElementById('tipoEntrega').value;
+    if (tipoEntrega === 'Entrega') subtotal += 5;
+
+    document.getElementById('subtotal').innerText = `Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+}
+
+document.querySelectorAll('.sabor-item').forEach(item => {
+    const select = item.querySelector('select');
+    const input = item.querySelector("input[type='number']");
+    const mais = item.querySelector('.mais');
+    const menos = item.querySelector('.menos');
+    const aviso = item.querySelector('.aviso');
+
+    if (mais) {
+        mais.addEventListener('click', () => {
+            if (select.value === '0') {
+                if (aviso) aviso.style.display = 'block';
+                return;
+            }
+            if (aviso) aviso.style.display = 'none';
+            input.value = Number(input.value) + 1;
+            calcularSubtotal();
+        });
+    }
+
+    if (menos) {
+        menos.addEventListener('click', () => {
+            if (select.value === '0') {
+                if (aviso) aviso.style.display = 'block';
+                return;
+            }
+            if (aviso) aviso.style.display = 'none';
+            input.value = Math.max(0, Number(input.value) - 1);
+            calcularSubtotal();
+        });
+    }
+
+    select.addEventListener('change', () => {
+        if (aviso) aviso.style.display = 'none';
+        calcularSubtotal();
+    });
+
+    input.addEventListener('input', () => calcularSubtotal());
+});
+
+document.getElementById('tipoEntrega').addEventListener('change', (event) => {
+    const area = document.getElementById('endereco-area');
+    if (event.target.value === 'Entrega') area.style.display = 'block';
+    else area.style.display = 'none';
+    calcularSubtotal();
+});
+
+document.getElementById('pagamento').addEventListener('change', (event) => {
+    const area = document.getElementById('troco-area');
+    if (event.target.value === 'Dinheiro') area.style.display = 'block';
+    else area.style.display = 'none';
+});
+function enviarWhats() {
+    let mensagem = "*PEDIDO - QUINTA DA TORTA*%0A%0A";
+
+    document.querySelectorAll('.sabor-item').forEach(item => {
+        const sabor = item.querySelector('label').innerText;
+        const preco = item.querySelector('select').value;
+        const qtd = item.querySelector("input[type='number']").value;
+
+        if (preco > 0 && qtd > 0) {
+            mensagem += `• ${sabor} — Qty: ${qtd}%0A`;
+        }
+    });
+
+    const entrega = document.getElementById('tipoEntrega').value;
+    mensagem += `%0A*Entrega:* ${entrega}`;
+
+    if (entrega === 'Entrega') {
+        const end = document.getElementById('endereco').value;
+        mensagem += `%0A*Endereço:* ${end}`;
+    }
+
+    const pagamento = document.getElementById('pagamento').value;
+    mensagem += `%0A*Pagamento:* ${pagamento}`;
+
+    if (pagamento === 'Dinheiro') {
+        const troco = document.getElementById('troco').value;
+        mensagem += `%0A*Troco para:* R$ ${troco}`;
+    }
+
+    const subtotal = document.getElementById('subtotal').innerText.replace('Subtotal: ', '');
+    mensagem += `%0A%0A*${subtotal}*`;
+
+    const numero = "5516988370946"; // <-- colocar número real depois
+    const link = `https://wa.me/${numero}?text=${mensagem}`;
+
+    window.open(link, '_blank');
+}
+
+</script>
